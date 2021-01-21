@@ -10,7 +10,7 @@ public class TimeConversionApp {
 		Scanner input = new Scanner(System.in);
 		
 		/* Stage 1: Prompt the user for input(s) and read input(s) from the user */
-		System.out.println("Enter a non-negative integer number of secons:");
+		System.out.println("Enter a non-negative integer number of seconds:");
 		int seconds = input.nextInt();
 		
 		/* Stage 2: Invoke the relevant utility method with the user input(s) */
