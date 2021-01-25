@@ -16,42 +16,107 @@ public class Utilities {
 	 */
 	public static String getTaxReport(int status, int income) {
 		String result = "";
-
-		/* Your implementation of this method starts here. 
-		 * Recall from Week 1's tutorial videos:
-		 * 1. No System.out.println statements should appear here.
-		 * 	  Instead, an explicit, final `return` statement is placed for you.
-		 * 2. No Scanner operations should appear here (e.g., input.nextInt()).
-		 *    Instead, refer to the input parameters of this method.   
-		 */
 		
+		double tax1 = 0;
+		String tax1s ="";
+		double tax2 = 0;
+		String tax2s ="";
+		double tax3 = 0;
+		String tax3s = "";
+		double sum = 0;
+		String sums = "";
 		
+		//Single Filing
+		
+		if (status == 1) {
+			if (income > 33950) {
+				tax1 = 8350*0.10;
+				tax1s = String.format("%.2f", tax1);
+				
+				tax2 = (33950-8350)*0.15;
+				tax2s = String.format("%.2f", tax2);
+				
+				tax3 = (income-33950)*0.25;
+				tax3s = String.format("%.2f", tax3);
+				
+				sum = tax1+tax2+tax3;
+				sums = String.format("%.2f", sum);
 
-		/* Your implementation ends here. */
+				result = "Single Filing: $"+sums+" (Part I: $"+tax1s+", Part II: $"+tax2s+", Part III: $"+tax3s+")";
+			}
+			else if (income > 8350) {
+				tax1 = 8350*0.10;
+				tax1s = String.format("%.2f", tax1);
+				
+				tax2 = (income-8350)*0.15;
+				tax2s = String.format("%.2f", tax2);
+				
+				sum = tax1+tax2;
+				sums = String.format("%.2f", sum);
+
+				result = "Single Filing: $"+sums+" (Part I: $"+tax1s+", Part II: $"+tax2s+")";
+			}
+			else {
+				tax1 = income*0.10;
+				tax1s = String.format("%.2f", tax1);
+				
+				sum = tax1;
+				sums = String.format("%.2f", sum);
+
+				result = "Single Filing: $"+sums+" (Part I: $"+tax1s+")";
+			}
+		}
+		
+		//Married Filing
+		
+		else if (status == 2) {
+			if (income > 67900) {
+				tax1 = 16700*0.10;
+				tax1s = String.format("%.2f", tax1);
+				
+				tax2 = (67900-16700)*0.15;
+				tax2s = String.format("%.2f", tax2);
+				
+				tax3 = (income-67900)*0.25;
+				tax3s = String.format("%.2f", tax3);
+				
+				sum = tax1+tax2+tax3;
+				sums = String.format("%.2f", sum);
+
+				result = "Married Filing: $"+sums+" (Part I: $"+tax1s+", Part II: $"+tax2s+", Part III: $"+tax3s+")";
+			}
+			else if (income > 16700) {
+				tax1 = 16700*0.10;
+				tax1s = String.format("%.2f", tax1);
+				
+				tax2 = (income-16700)*0.15;
+				tax2s = String.format("%.2f", tax2);
+				
+				sum = tax1+tax2;
+				sums = String.format("%.2f", sum);
+
+				result = "Married Filing: $"+sums+" (Part I: $"+tax1s+", Part II: $"+tax2s+")";
+			}
+			else {
+				tax1 = income*0.10;
+				tax1s = String.format("%.2f", tax1);
+				
+				sum = tax1;
+				sums = String.format("%.2f", sum);
+
+				result = "Married Filing: $"+sums+" (Part I: $"+tax1s+")";
+			}
+		}
+		
+		else {
+			result = ("Illegal Status: "+status);
+		}
 
 		return result;
 	}
 	
 	/*
-	 * Input parameters:
-	 * 	- `p1` is the name of player 1
-	 *  - `p2` is the name of player 2
-	 *  - `p1r1` is what player 1 plays in round 1 ('R', 'P', or 'S')
-	 *  - `p2r1` is what player 2 plays in round 1 ('R', 'P', or 'S')
-	 *  - `p1r2` is what player 1 plays in round 2 ('R', 'P', or 'S')
-	 *  - `p2r2` is what player 2 plays in round 2 ('R', 'P', or 'S')
-	 *  
-	 * Assumptions:
-	 * 	- `p1r1`, `p2r1`, `p1r2`, or `p2r2` is one of the following characters:
-	 *     'R' for rock, 'P' for paper, and 'S' scissors (case-sensitive)
-	 *     
-	 * Hints:
-	 *  - Compare character values using the relational operator ==.
-	 *  - Study the 9 test cases in TestUtilites: they are arranged in a systematic (yet not exhaustive) way.
-	 *    Q. In order to exhaustively test this game, considering how two players may play in two rounds,
-	 *    	 how many tests do we need? (Optionally, you may write extra test yourself as an exercise.)
-	 *    
-	 * Refer to you lab instructions for what the method should return.
+	 * ROCK PAPER SCISSOR !
 	 */
 	public static String getRPSGameReport(String p1, String p2, char p1r1, char p2r1, char p1r2, char p2r2) {
 		String result = "";
@@ -183,7 +248,6 @@ public class Utilities {
 		}
 		
 		result = "Game over: "+winner+" [Round 1: "+result1+" ; "+"Round 2: "+result2;
-		
 		return result;
 	}
 }
