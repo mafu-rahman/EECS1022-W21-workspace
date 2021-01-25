@@ -2,17 +2,7 @@ package model;
 
 public class Utilities {
 	/*
-	 * Input parameters:
-	 * 	- `status` is the filing status (which should be 1 for Single Filing or 2 for Married Filing)
-	 *  - `income` is the tax payer's income (an integer value)
-	 *  
-	 * Assumptions:
-	 * 	- `income` passed by user is always positive (> 0)
-	 *  
-	 * Refer to you lab instructions for what the method should return.
-	 * 
-	 * See this short tutorial video illustrating how to compute tax:
-	 * https://www.youtube.com/watch?v=q2NT5x77hdg&list=PL5dxAmCmjv_7YgI2LgcwjWTHiNZSR-aQX&index=1 
+	 * Tax Computation App
 	 */
 	public static String getTaxReport(int status, int income) {
 		String result = "";
@@ -118,6 +108,7 @@ public class Utilities {
 	/*
 	 * ROCK PAPER SCISSOR !
 	 */
+	
 	public static String getRPSGameReport(String p1, String p2, char p1r1, char p2r1, char p1r2, char p2r2) {
 		String result = "";
 		
