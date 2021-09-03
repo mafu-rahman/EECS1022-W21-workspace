@@ -89,23 +89,24 @@ public class Utilities {
 	 *  	wrapped around back from the beginning of the array.
 	 *   
 	 * See the JUnit tests related to this method.
-	 */
-	public static int[] task2(int[] seq, int n) {
+	 */														//  0  1  2  3
+	public static int[] task2(int[] seq, int n) {			// [a, b, c, d]
     	int[] result = new int[seq.length];
-		
-    	for(int i=0; i<seq.length;i++) {
-			if((seq.length/2 < n) && (n>i)) {
-				result[n-i-1]=seq[i];
-			}
-			else if((seq.length/2 < n) && (n<i)) {
-				result[i-n-1]=seq[i];
-			}
-			else {
-				result[i+n]=seq[i];
-			}
+		if(n>seq.length) {
+			n=n%seq.length;
 		}
 		
-    	
+    	int k = seq.length - n;
+		
+		for(int i=0; i<seq.length; i++) {
+			if(i<k) {
+				result[i+n]=seq[i];
+			}
+			
+			else {
+				result[i+n-seq.length]=seq[i];
+			}
+		}
 
 		// Do not modify this return statement. 
         return result;
@@ -185,23 +186,52 @@ public class Utilities {
 	 * See the JUnit tests related to this method.
 	 */
 	public static int[] task4(int[] seq) {
-        int[] result = null; 
-		int count =0;
-		
-        for(int i=0;i<seq.length;i+=2) {
-        	for(int j=0; j<seq.length;j++) {
-        		if(seq[i]==seq[j]) {
-        			count++;
-        		}
-        		result[i]=count;
-        		result[i+1]=seq[i];
-        	}
-        }
-        
-        
-		
-        
-
+		int c=1;
+		int[] result = {};
+		if(seq.length != 0) {
+	        for(int i=0; i<seq.length-1; i++) {
+	        	if(seq[i]!=seq[i+1]) {
+	        		c++;
+	        	}
+	        }
+	        
+	        int[] unique = new int[c];
+	        unique[0]=seq[0];
+	        int k=0;
+	        
+	        for(int i=0; i<seq.length-1; i++) {
+	        	if(seq[i]!=seq[i+1]) {
+	        		unique[k]=seq[i];
+	        		k++;
+	        	}
+	        }
+	        if(k>0) {
+		        if(unique[k-1]!=seq[seq.length-1]) {
+		        	unique[k]=seq[seq.length-1];
+		        	k++;
+		        }
+	        }
+	        
+	        result = new int[c*2];
+	        c=0;
+	        int odd = 1;
+	        int even = 0;
+	        
+	        for(int i=0; i<unique.length; i++) {
+	        	for(int j=0; j<seq.length; j++) {
+	        		if(unique[i]==seq[j]) {
+	        			c++;
+	        		}
+	        	}
+	        	
+	        	result[even]=c;
+	        	result[odd]=unique[i];
+	        	c=0;
+	        	even += 2;
+	        	odd += 2;
+	        }
+		}
+                
 		// Do not modify this return statement. 
         return result;
     }	

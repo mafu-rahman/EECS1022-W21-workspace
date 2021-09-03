@@ -9,14 +9,15 @@ public class App {
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
 		
-		int[] seq = {1,2,3,4,5};
+		int[] seq = {0};
 		
-		int[] s = Utilities.task2(seq,2);
+		int[] s = Utilities.task4(seq);
 		for(int i=0; i<s.length;i++) {
 			System.out.print(s[i]);
 		}
 		
-		input.close();
+		
+		
 	}
 
 }
