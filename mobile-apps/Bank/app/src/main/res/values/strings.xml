@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Bank App - Mahfuz Rahman (217847518)</string>
+    
+    <string-array name="titles">
+        <item>Deposit</item>
+        <item>Withdraw</item>
+        <item>Transfer</item>
+        <item>Print Statement</item>
+    </string-array>
+</resources>
